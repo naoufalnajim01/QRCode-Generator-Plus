@@ -58,17 +58,6 @@
 
 🔗 **Demo Live:** [qrcode.connectapps.org](https://qrcode.connectapps.org) *(à venir)*
 
-### Captures d'écran
-
-#### Mode Création
-![Mode Création](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Mode+Création)
-
-#### Mode Scanner
-![Mode Scanner](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Mode+Scanner)
-
-#### Templates de Données
-![Templates](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Templates+Prédéfinis)
-
 ---
 
 ## 📦 Installation
@@ -247,7 +236,7 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 - [QR Code Styling](https://github.com/kozakdenys/qr-code-styling) - Bibliothèque de génération
 - [jsQR](https://github.com/cozmo/jsQR) - Bibliothèque de décodage
 - [Google Fonts](https://fonts.google.com/) - Typographie
-- Inspiré par [mini-qr](https://github.com/estebandalelr/mini-qr) de Estee Tey
+- Inspiré par [mini-qr](https://github.com/lyqht/mini-qr) de Estee Tey
 
 ---
 
