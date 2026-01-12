@@ -1,0 +1,113 @@
+{
+    "app": {
+        "title": "QRCode+ Generator",
+        "description": "Create and scan QR codes easily"
+    },
+    "header": {
+        "github": "GitHub repository",
+        "toggleTheme": "Toggle dark mode",
+        "selectLanguage": "Select language"
+    },
+    "modes": {
+        "create": "Create",
+        "scan": "Scan",
+        "switchToCreate": "Switch to Create Mode",
+        "switchToScan": "Switch to Scan Mode"
+    },
+    "actions": {
+        "copy": "Copy QR Code to clipboard",
+        "save": "Save QR Code configuration",
+        "load": "Load QR Code configuration"
+    },
+    "export": {
+        "title": "Export QR code",
+        "filename": "File name",
+        "png": "PNG",
+        "jpg": "JPG",
+        "svg": "SVG"
+    },
+    "settings": {
+        "title": "Settings to customize your QR code",
+        "frame": {
+            "title": "Frame settings",
+            "new": "New!",
+            "add": "Add frame"
+        },
+        "qr": {
+            "title": "QR code settings",
+            "preset": "Preset",
+            "data": "Data to encode",
+            "singleExport": "Single export",
+            "batchExport": "Batch export",
+            "placeholder": "Have a nice day!",
+            "templates": "Data templates"
+        },
+        "logo": {
+            "url": "Logo image URL",
+            "upload": "Upload image",
+            "withBackground": "With background"
+        },
+        "colors": {
+            "background": "Background color",
+            "dots": "Dots color",
+            "cornerSquare": "Corners Square color",
+            "cornerDot": "Corners Dot color"
+        },
+        "dimensions": {
+            "width": "Width (px)",
+            "height": "Height (px)",
+            "borderRadius": "Border radius (px)",
+            "margin": "Margin (px)",
+            "imageMargin": "Image margin (px)"
+        },
+        "types": {
+            "dot": "Dot type",
+            "cornerSquare": "Corners Square type",
+            "cornerDot": "Corners Dot type",
+            "dots": "dots",
+            "rounded": "rounded",
+            "classy": "classy",
+            "classyRounded": "classy-rounded",
+            "square": "square",
+            "extraRounded": "extra-rounded"
+        },
+        "errorCorrection": {
+            "title": "Error correction level",
+            "low": "Low (7%)",
+            "medium": "Medium (15%)",
+            "high": "High (25%)",
+            "highest": "Highest (30%)",
+            "suggested": "Suggested"
+        }
+    },
+    "scan": {
+        "title": "Scan a QR Code",
+        "upload": "Upload QR Code Image",
+        "dragDrop": "or drag and drop an image here",
+        "chooseFile": "Choose file",
+        "tip": "Tip: For best results, use a clear image with good lighting.",
+        "or": "OR",
+        "camera": "Scan with Camera",
+        "paste": "(Ctrl+V) to paste",
+        "decoded": "Decoded content",
+        "copyContent": "Copy content",
+        "openLink": "Open link",
+        "noQRFound": "No QR code found in the image.",
+        "success": "QR Code decoded successfully"
+    },
+    "notifications": {
+        "copied": "Copied to clipboard",
+        "configSaved": "Configuration saved",
+        "configLoaded": "Configuration loaded",
+        "noConfig": "No saved configuration",
+        "generated": "Code generated successfully",
+        "downloaded": "Downloaded as {format}",
+        "error": "An error occurred",
+        "invalidImage": "Please select an image",
+        "dropImage": "Please drop an image"
+    },
+    "footer": {
+        "createdBy": "Created by",
+        "copyright": "© {year}"
+    }
+}

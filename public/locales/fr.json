@@ -1,0 +1,113 @@
+{
+    "app": {
+        "title": "Générateur QRCode+",
+        "description": "Créer et scanner des QR codes facilement"
+    },
+    "header": {
+        "github": "Dépôt GitHub",
+        "toggleTheme": "Activer/désactiver le mode sombre",
+        "selectLanguage": "Sélectionner la langue"
+    },
+    "modes": {
+        "create": "Créer",
+        "scan": "Analyser",
+        "switchToCreate": "Basculer vers le mode création",
+        "switchToScan": "Passer en mode Scan"
+    },
+    "actions": {
+        "copy": "Copier le QR Code dans le presse-papiers",
+        "save": "Enregistrer la configuration du QR Code",
+        "load": "Charger la configuration du QR Code"
+    },
+    "export": {
+        "title": "Export QR code",
+        "filename": "Nom du fichier",
+        "png": "PNG",
+        "jpg": "JPG",
+        "svg": "SVG"
+    },
+    "settings": {
+        "title": "Paramètres pour personnaliser votre code QR",
+        "frame": {
+            "title": "Paramètres du cadre",
+            "new": "Nouveau!",
+            "add": "Ajouter un cadre"
+        },
+        "qr": {
+            "title": "Paramètres du code QR",
+            "preset": "Préréglé",
+            "data": "Données à encoder",
+            "singleExport": "Exportation simple",
+            "batchExport": "Exportation par lots",
+            "placeholder": "Bonne journée!",
+            "templates": "Modèles de données"
+        },
+        "logo": {
+            "url": "URL de l'image du logo",
+            "upload": "Charger une image",
+            "withBackground": "Avec fond"
+        },
+        "colors": {
+            "background": "Couleur d'arrière-plan",
+            "dots": "Couleur des points",
+            "cornerSquare": "Couleur du carré des coins",
+            "cornerDot": "Couleur du point d'angle"
+        },
+        "dimensions": {
+            "width": "Largeur (px)",
+            "height": "Hauteur (px)",
+            "borderRadius": "Rayon de la bordure (px)",
+            "margin": "Marge (px)",
+            "imageMargin": "Marge de l'image (px)"
+        },
+        "types": {
+            "dot": "Type de point",
+            "cornerSquare": "Type de carré des coins",
+            "cornerDot": "Type de point d'angle",
+            "dots": "points",
+            "rounded": "arrondi",
+            "classy": "classe",
+            "classyRounded": "arrondi à la classe",
+            "square": "carré",
+            "extraRounded": "extra-arrondi"
+        },
+        "errorCorrection": {
+            "title": "Niveau de correction d'erreur",
+            "low": "Faible (7%)",
+            "medium": "Moyenne (15%)",
+            "high": "Haut (25%)",
+            "highest": "Le plus haut (30%)",
+            "suggested": "Suggéré"
+        }
+    },
+    "scan": {
+        "title": "Scannez un code QR",
+        "upload": "Télécharger l'image du QR Code",
+        "dragDrop": "ou glisser-déposer une image ici",
+        "chooseFile": "Choisir un fichier",
+        "tip": "Astuce : Pour de meilleurs résultats, utilisez une image claire avec un bon éclairage.",
+        "or": "OU",
+        "camera": "Scanner avec l'appareil photo",
+        "paste": "(Ctrl+V) pour coller",
+        "decoded": "Contenu décodé",
+        "copyContent": "Copier le contenu",
+        "openLink": "Ouvrir le lien",
+        "noQRFound": "Aucun code QR trouvé dans l'image.",
+        "success": "QR Code décodé avec succès"
+    },
+    "notifications": {
+        "copied": "Copié dans le presse-papiers",
+        "configSaved": "Configuration sauvegardée",
+        "configLoaded": "Configuration chargée",
+        "noConfig": "Aucune configuration sauvegardée",
+        "generated": "Code généré avec succès",
+        "downloaded": "Téléchargé en {format}",
+        "error": "Une erreur s'est produite",
+        "invalidImage": "Veuillez sélectionner une image",
+        "dropImage": "Veuillez déposer une image"
+    },
+    "footer": {
+        "createdBy": "Créé par",
+        "copyright": "© {year}"
+    }
+}

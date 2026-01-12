@@ -1,0 +1,346 @@
+/* FAQ Page Styles */
+
+.faq-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+/* Hero Section */
+.faq-hero {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.faq-hero h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.faq-hero p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+}
+
+/* Navigation */
+.faq-nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+.faq-nav a {
+    padding: 0.625rem 1.25rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.faq-nav a:hover {
+    background: var(--text-primary);
+    color: var(--bg-main);
+    transform: translateY(-2px);
+}
+
+/* Sections */
+.faq-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.last-updated {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+/* Content Cards */
+.content-card {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .content-card {
+    background: var(--zinc-800);
+}
+
+.content-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.content-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.content-card p:last-child {
+    margin-bottom: 0;
+}
+
+.content-card code {
+    background: var(--bg-main);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #0284c7;
+}
+
+.content-card.highlight {
+    border-color: #0284c7;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(2, 132, 199, 0.02));
+}
+
+/* Feature Lists */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: #0284c7;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 1.125rem;
+}
+
+.highlight-text {
+    color: #dc2626;
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* Flowchart */
+.flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--bg-main);
+    border-radius: 12px;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5rem;
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background: #0284c7;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.step-content p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: #0284c7;
+    font-weight: bold;
+}
+
+/* FAQ Grid */
+.faq-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+[data-theme="dark"] .faq-item {
+    background: var(--zinc-800);
+}
+
+.faq-item:hover {
+    border-color: #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+}
+
+.faq-item summary {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.0625rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #0284c7;
+    font-weight: 700;
+    transition: transform 0.2s;
+}
+
+.faq-item[open] summary::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+.faq-item p {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.faq-item ul {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+}
+
+.faq-item li {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact List */
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    padding: 0.5rem 0;
+}
+
+.contact-list a {
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+/* Back Button */
+.btn-back {
+    padding: 0.625rem 1.25rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background: var(--text-primary);
+    color: var(--bg-main);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .faq-hero h1 {
+        font-size: 2rem;
+    }
+
+    .faq-hero p {
+        font-size: 1rem;
+    }
+
+    .faq-nav {
+        gap: 0.5rem;
+    }
+
+    .faq-nav a {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .content-card {
+        padding: 1.5rem;
+    }
+
+    .flow-step {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .flowchart {
+        padding: 1rem;
+    }
+}

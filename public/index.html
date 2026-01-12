@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur QRCode+ | Créer et Scanner des QR Codes</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Meta -->
+    <meta name="description"
+        content="The simplest way to create and scan QR codes. Design beautiful QR codes in just a few clicks.">
+    <meta name="author" content="Naoufal Najim">
+    <meta name="color-scheme" content="dark light">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="logo">Générateur QRCode<span class="logo-plus">+</span></h1>
+
+            <div class="header-actions">
+                <!-- GitHub Link -->
+                <a href="https://github.com/naoufalnajim01" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                    aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12.001 2c-5.525 0-10 4.475-10 10a9.994 9.994 0 0 0 6.837 9.488c.5.087.688-.213.688-.476c0-.237-.013-1.024-.013-1.862c-2.512.463-3.162-.612-3.362-1.175c-.113-.288-.6-1.175-1.025-1.413c-.35-.187-.85-.65-.013-.662c.788-.013 1.35.725 1.538 1.025c.9 1.512 2.337 1.087 2.912.825c.088-.65.35-1.087.638-1.337c-2.225-.25-4.55-1.113-4.55-4.938c0-1.088.387-1.987 1.025-2.688c-.1-.25-.45-1.275.1-2.65c0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337c1.913-1.3 2.75-1.024 2.75-1.024c.55 1.375.2 2.4.1 2.65c.637.7 1.025 1.587 1.025 2.687c0 3.838-2.337 4.688-4.563 4.938c.363.312.676.912.676 1.85c0 1.337-.013 2.412-.013 2.75c0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10Z" />
+                    </svg>
+                </a>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                    <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="theme-icon-dark" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Language Selector -->
+                <select id="lang-selector" class="lang-select" aria-label="Select language">
+                    <option value="fr" selected>Français</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="create">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M3 11h8V3H3zm2-6h4v4H5zM3 21h8v-8H3zm2-6h4v4H5zm8-12v8h8V3zm6 6h-4V5h4zm-6 12h8v-8h-8zm2-6h4v4h-4z" />
+                </svg>
+                <span>Créer</span>
+            </button>
+            <button class="mode-btn" data-mode="scan">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6m0 8a5 5 0 1 1 0-10a5 5 0 0 1 0 10m0-12a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1m4.5 1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5M20 4h-3.17l-1.24-1.35A1.99 1.99 0 0 0 14.12 2H9.88c-.56 0-1.1.24-1.48.65L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2" />
+                </svg>
+                <span>Analyser</span>
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Create Mode -->
+            <div id="create-mode" class="content-section">
+                <div class="two-column-layout">
+                    <!-- Left: QR Preview -->
+                    <div class="qr-preview-section">
+                        <div id="qr-canvas" class="qr-canvas"></div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions" style="margin-top: 1.5rem;">
+                            <button id="copy-qr-btn" class="action-btn" title="Copier le QR Code">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copier
+                            </button>
+                            <button id="save-config-btn" class="action-btn" title="Sauvegarder la configuration">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                                Sauvegarder
+                            </button>
+                            <button id="load-config-btn" class="action-btn" title="Charger la configuration">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Charger
+                            </button>
+                        </div>
+
+                        <!-- Export Options -->
+                        <div class="export-section">
+                            <h3>Export QR code</h3>
+                            <label>Nom du fichier</label>
+                            <input type="text" id="filename" class="text-input" value="qr-code"
+                                style="margin-bottom: 1rem;">
+
+                            <div class="export-buttons">
+                                <button id="download-png" class="btn-export">PNG</button>
+                                <button id="download-jpg" class="btn-export">JPG</button>
+                                <button id="download-svg" class="btn-export">SVG</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Settings -->
+                    <div class="settings-section">
+                        <h2>Paramètres pour personnaliser votre code QR</h2>
+
+                        <!-- Frame Settings -->
+                        <details class="settings-group">
+                            <summary>Paramètres du cadre <span class="badge">Nouveau!</span></summary>
+                            <div class="settings-content">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="add-frame">
+                                    <span>Ajouter un cadre</span>
+                                </label>
+                            </div>
+                        </details>
+
+                        <!-- QR Settings -->
+                        <details class="settings-group" open>
+                            <summary>Paramètres du code QR</summary>
+                            <div class="settings-content">
+                                <!-- Data Input -->
+                                <label>Données à encoder</label>
+                                <div class="tab-buttons">
+                                    <button class="tab-btn active" data-tab="simple">Exportation simple</button>
+                                    <button class="tab-btn" data-tab="batch">Exportation par lots</button>
+                                </div>
+
+                                <div id="simple-tab" class="tab-content active">
+                                    <textarea id="qr-data" class="text-input" rows="3"
+                                        placeholder="Bonne journée!">Bonne journée!</textarea>
+                                    <button id="templates-btn" class="btn-secondary" style="margin-top: 0.5rem;">Modèles
+                                        de données</button>
+                                </div>
+
+                                <div id="batch-tab" class="tab-content hidden">
+                                    <textarea id="batch-data" class="text-input" rows="5"
+                                        placeholder="Ligne 1&#10;Ligne 2&#10;Ligne 3"></textarea>
+                                    <button id="generate-batch" class="btn-primary" style="margin-top: 0.5rem;">Générer
+                                        par lots</button>
+                                </div>
+
+                                <!-- Logo -->
+                                <div style="margin-top: 1.5rem;">
+                                    <label>URL de l'image du logo</label>
+                                    <input type="text" id="logo-url" class="text-input" placeholder="https://...">
+                                    <input type="file" id="logo-file" accept="image/*" class="hidden">
+                                    <button id="upload-logo" class="btn-secondary" style="margin-top: 0.5rem;">Charger
+                                        une image</button>
+                                    <label class="checkbox-label" style="margin-top: 0.5rem;">
+                                        <input type="checkbox" id="logo-background" checked>
+                                        <span>Avec fond</span>
+                                    </label>
+                                </div>
+
+                                <!-- Colors -->
+                                <div class="color-grid">
+                                    <div class="color-item">
+                                        <label>Couleur d'arrière-plan</label>
+                                        <input type="color" id="bg-color" value="#ffffff">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Couleur des points</label>
+                                        <input type="color" id="dots-color" value="#000000">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Couleur du carré des coins</label>
+                                        <input type="color" id="corner-square-color" value="#000000">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Couleur du point d'angle</label>
+                                        <input type="color" id="corner-dot-color" value="#000000">
+                                    </div>
+                                </div>
+
+                                <!-- Dimensions -->
+                                <div class="dimension-grid">
+                                    <div class="dimension-item">
+                                        <label>Largeur (px)</label>
+                                        <input type="number" id="width" class="text-input" value="300" min="100"
+                                            max="1000">
+                                    </div>
+                                    <div class="dimension-item">
+                                        <label>Hauteur (px)</label>
+                                        <input type="number" id="height" class="text-input" value="300" min="100"
+                                            max="1000">
+                                    </div>
+                                    <div class="dimension-item">
+                                        <label>Rayon de la bordure (px)</label>
+                                        <input type="number" id="border-radius" class="text-input" value="0" min="0"
+                                            max="50">
+                                    </div>
+                                    <div class="dimension-item">
+                                        <label>Marge (px)</label>
+                                        <input type="number" id="margin" class="text-input" value="10" min="0" max="50">
+                                    </div>
+                                    <div class="dimension-item">
+                                        <label>Marge de l'image (px)</label>
+                                        <input type="number" id="image-margin" class="text-input" value="0" min="0"
+                                            max="20">
+                                    </div>
+                                </div>
+
+                                <!-- Dot Type -->
+                                <div style="margin-top: 1.5rem;">
+                                    <label>Type de point</label>
+                                    <select id="dot-type" class="text-input">
+                                        <option value="dots">points</option>
+                                        <option value="rounded">arrondi</option>
+                                        <option value="classy">classe</option>
+                                        <option value="classy-rounded">arrondi à la classe</option>
+                                        <option value="square">carré</option>
+                                        <option value="extra-rounded">extra-arrondi</option>
+                                    </select>
+                                </div>
+
+                                <!-- Corner Square Type -->
+                                <div style="margin-top: 1rem;">
+                                    <label>Type de carré des coins</label>
+                                    <select id="corner-square-type" class="text-input">
+                                        <option value="dot">point</option>
+                                        <option value="square">carré</option>
+                                        <option value="extra-rounded">extra-arrondi</option>
+                                    </select>
+                                </div>
+
+                                <!-- Corner Dot Type -->
+                                <div style="margin-top: 1rem;">
+                                    <label>Type de point d'angle</label>
+                                    <select id="corner-dot-type" class="text-input">
+                                        <option value="dot">point</option>
+                                        <option value="square">carré</option>
+                                    </select>
+                                </div>
+
+                                <!-- Error Correction -->
+                                <div style="margin-top: 1rem;">
+                                    <label>Niveau de correction d'erreur</label>
+                                    <select id="error-correction" class="text-input">
+                                        <option value="L">Faible (7%)</option>
+                                        <option value="M">Moyenne (15%)</option>
+                                        <option value="Q" selected>Haut (25%)</option>
+                                        <option value="H">Le plus haut (30%)</option>
+                                    </select>
+                                    <p class="hint">Suggéré</p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scan Mode -->
+            <div id="scan-mode" class="content-section hidden">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Scannez un code QR</h2>
+
+                <!-- Drag & Drop Zone -->
+                <div id="drop-zone" class="drop-zone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    <h3>Télécharger l'image du QR Code</h3>
+                    <p>ou glisser-déposer une image ici</p>
+                    <input type="file" id="qr-file" accept="image/*" class="hidden">
+                    <button id="select-file" class="btn-primary" style="margin-top: 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                        </svg>
+                        Choisir un fichier
+                    </button>
+                    <p class="hint" style="margin-top: 1rem; text-align: center;">Astuce : Pour de meilleurs résultats,
+                        utilisez une image claire avec un bon éclairage.</p>
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0; color: var(--text-muted); font-weight: 600;">OU</div>
+
+                <!-- Camera Option (placeholder for future) -->
+                <div style="text-align: center;">
+                    <button class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;"
+                        disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        Scanner avec l'appareil photo
+                    </button>
+                    <p class="hint" style="margin-top: 0.5rem;">(Ctrl+V) pour coller</p>
+                </div>
+
+                <!-- Scan Result -->
+                <div id="scan-result" class="hidden" style="margin-top: 3rem;">
+                    <h3 style="margin-bottom: 1rem;">Contenu décodé</h3>
+                    <textarea id="decoded-content" class="text-input" rows="6" readonly></textarea>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                        <button id="copy-decoded" class="btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copier le contenu
+                        </button>
+                        <button id="open-link" class="btn-secondary hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ouvrir le lien
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FAQ Section -->
+        <section id="faq-section" class="faq-section">
+            <div class="faq-container">
+                <h2 class="faq-title">Questions Fréquentes</h2>
+                <p class="faq-subtitle">Tout ce que vous devez savoir sur notre générateur de QR codes</p>
+
+                <div class="faq-grid">
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Qu'est-ce qu'un code QR ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Un code QR (Quick Response) est un type de code-barres bidimensionnel qui peut stocker
+                                diverses informations comme des URLs, du texte, des contacts, etc. Il peut être scanné
+                                rapidement avec un smartphone.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Comment créer un code QR ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>C'est simple : entrez vos données dans le champ prévu, personnalisez le design (couleurs,
+                                logo, style), puis téléchargez votre code QR au format PNG, JPG ou SVG.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Les codes QR générés expirent-ils ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Non, les codes QR générés sont statiques et ne expirent jamais. Ils fonctionneront
+                                indéfiniment tant que les données qu'ils contiennent restent valides.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Puis-je ajouter un logo à mon code QR ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Oui ! Vous pouvez télécharger votre propre logo ou utiliser une URL d'image. Le logo sera
+                                centré dans le code QR tout en maintenant sa scannabilité.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Quels formats d'export sont disponibles ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Vous pouvez télécharger vos codes QR en trois formats : PNG (recommandé pour le web), JPG
+                                (plus petit) et SVG (vectoriel, idéal pour l'impression).</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Comment scanner un code QR ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Utilisez l'onglet "Analyser" pour télécharger une image de code QR. Notre outil décodera
+                                instantanément le contenu et vous permettra de le copier ou d'ouvrir les liens.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Mes données sont-elles sécurisées ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Absolument ! Toutes les opérations se font localement dans votre navigateur. Aucune
+                                donnée n'est envoyée à nos serveurs. Votre confidentialité est garantie.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Puis-je personnaliser les couleurs ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Oui ! Vous avez un contrôle total sur les couleurs : arrière-plan, points, coins. Vous
+                                pouvez également choisir différents styles de points et de coins.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Qu'est-ce que le niveau de correction d'erreur ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>C'est la capacité du code QR à rester lisible même s'il est partiellement endommagé. Un
+                                niveau plus élevé (H) permet plus de dommages mais rend le code plus dense.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Puis-je générer plusieurs codes QR à la fois ?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Oui ! Utilisez l'onglet "Exportation par lots" pour entrer plusieurs lignes de données.
+                                Chaque ligne générera un code QR séparé, tous téléchargés dans un fichier ZIP.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll to Top Button -->
+        <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Retour en haut">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <span>Créé avec <span class="heart">❤️</span> par</span>
+                <a href="https://github.com/naoufalnajim01" target="_blank" rel="noopener noreferrer"
+                    class="footer-link">Naoufal Najim</a>
+                <span class="footer-separator">|</span>
+                <a href="https://github.com/naoufalnajim01" target="_blank" rel="noopener noreferrer"
+                    class="footer-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12.001 2c-5.525 0-10 4.475-10 10a9.994 9.994 0 0 0 6.837 9.488c.5.087.688-.213.688-.476c0-.237-.013-1.024-.013-1.862c-2.512.463-3.162-.612-3.362-1.175c-.113-.288-.6-1.175-1.025-1.413c-.35-.187-.85-.65-.013-.662c.788-.013 1.35.725 1.538 1.025c.9 1.512 2.337 1.087 2.912.825c.088-.65.35-1.087.638-1.337c-2.225-.25-4.55-1.113-4.55-4.938c0-1.088.387-1.987 1.025-2.688c-.1-.25-.45-1.275.1-2.65c0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337c1.913-1.3 2.75-1.024 2.75-1.024c.55 1.375.2 2.4.1 2.65c.637.7 1.025 1.587 1.025 2.687c0 3.838-2.337 4.688-4.563 4.938c.363.312.676.912.676 1.85c0 1.337-.013 2.412-.013 2.75c0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10Z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/naoufalnajim01/" target="_blank" rel="noopener noreferrer"
+                    class="footer-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                    </svg>
+                </a>
+                <span class="footer-separator">|</span>
+                <span>© <span id="year"></span></span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/scroll-top.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
