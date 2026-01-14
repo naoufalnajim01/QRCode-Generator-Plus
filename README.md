@@ -56,7 +56,7 @@
 
 ## 🚀 Démo
 
-🔗 **Demo Live:** [qrcode.connectapps.org](https://qr.connectapps.org) *(à venir)*
+🔗 **Demo Live:** [qr.connectapps.org](https://qr.connectapps.org) *(à venir)*
 
 ---
 
